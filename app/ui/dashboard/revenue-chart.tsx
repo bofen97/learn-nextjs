@@ -7,15 +7,12 @@ import { Revenue } from "@/app/lib/definitions";
 // https://www.tremor.so/
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
+import { fetchRevenue } from "@/app/lib/data";
+export default async function RevenueChart() {
+  const revenue = await fetchRevenue();
 
-export default async function RevenueChart({
-  revenue,
-}: {
-  revenue: Revenue[];
-}) {
   const chartHeight = 350;
   // NOTE: Uncomment this code in Chapter 7
-
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
   if (!revenue || revenue.length === 0) {
